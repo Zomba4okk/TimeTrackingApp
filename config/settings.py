@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # libs
     "rest_framework",
+    "django_extensions",
     # apps
     "apps.projects",
     "apps.time_tracking",
@@ -88,6 +89,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "users.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
