@@ -4,7 +4,12 @@ from django_extensions.db.models import TimeStampedModel
 
 class Project(TimeStampedModel):
     name = models.CharField(
-        verbose_name="Name", max_length=100, null=False, blank=False, help_text="Project name"
+        verbose_name="Name",
+        max_length=100,
+        null=False,
+        blank=False,
+        unique=True,
+        help_text="Project name",
     )
     description = models.TextField(
         verbose_name="Description",
