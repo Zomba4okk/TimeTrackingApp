@@ -39,8 +39,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name="Email",
         null=False,
         blank=False,
-        help_text="User's email (used as login)",
         unique=True,
+        help_text="User's email (used as login)",
     )
     is_active = models.BooleanField(
         # This field should be used for email confirmation feature.
