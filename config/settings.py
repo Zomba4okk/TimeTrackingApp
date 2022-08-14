@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # libs
+    "django_extensions",
     "rest_framework",
     "rest_framework.authtoken",
-    "django_extensions",
+    "drf_yasg",
     # apps
     "apps.projects",
     "apps.time_tracking",
