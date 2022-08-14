@@ -72,6 +72,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=False,
         help_text="User's last name",
     )
+    projects = models.ManyToManyField(
+        "projects.Project", through="users.UserProjects", related_name="users"
+    )
 
     objects = UserManager()
 
@@ -91,8 +94,6 @@ class UserProjects(models.Model):
     """The model store info about which users are assigned to which projects"""
 
     project = models.ForeignKey(
-        "projects.Project", related_name="users", on_delete=models.CASCADE, null=False, blank=False
+        "projects.Project", on_delete=models.CASCADE, null=False, blank=False
     )
-    user = models.ForeignKey(
-        User, related_name="projects", on_delete=models.CASCADE, null=False, blank=False
-    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
