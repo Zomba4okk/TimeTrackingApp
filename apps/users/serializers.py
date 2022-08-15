@@ -17,4 +17,3 @@ class UserDetailsSerializer(ModelSerializer):
         model = User
         fields = ("email", "first_name", "last_name", "projects")
         read_only_fields = ("email", "projects")
-        extra_kwargs = {"first_name": {"required": False}, "last_name": {"required": False}}
