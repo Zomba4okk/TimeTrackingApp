@@ -27,7 +27,7 @@ class ProjectsView(ListCreateAPIView):
 class ProjectDetailsView(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminPermission,)
     serializer_class = ProjectDetailsSerializer
-    queryset = Project.objects.all()
+    queryset = Project.objects.prefetch_related("timestamps__user").all()
     lookup_field = "id"
     lookup_url_kwarg = "project_id"
 

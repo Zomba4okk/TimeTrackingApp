@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from apps.projects.models import Project
+from apps.time_tracking.serializers import TimestampListSerializer
 
 
 class ProjectListSerializer(serializers.ModelSerializer):
@@ -10,10 +11,12 @@ class ProjectListSerializer(serializers.ModelSerializer):
 
 
 class ProjectDetailsSerializer(serializers.ModelSerializer):
+    timestamps = TimestampListSerializer(many=True, read_only=True)
+
     class Meta:
         model = Project
-        fields = ("id", "name", "description")
-        read_only_fields = ("id",)
+        fields = ("id", "name", "description", "timestamps")
+        read_only_fields = ("id", "timestamps")
 
 
 class ProjectAssigmentsSerializer(serializers.Serializer):
