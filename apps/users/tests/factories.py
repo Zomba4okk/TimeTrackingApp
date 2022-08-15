@@ -10,3 +10,4 @@ class UserFactory(factory.django.DjangoModelFactory):
     email = factory.Sequence(lambda n: f"email.{n}@gmail.com")
     first_name = factory.Faker("first_name")
     last_name = factory.Faker("last_name")
+    password = factory.PostGenerationMethodCall("set_password", "qwerty")
