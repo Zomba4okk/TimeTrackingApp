@@ -72,9 +72,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=False,
         help_text="User's last name",
     )
-    projects = models.ManyToManyField(
-        "projects.Project", through="users.UserProjects", related_name="users"
-    )
+
+    # The relationship store info about which users are assigned to which projects
+    projects = models.ManyToManyField("projects.Project", related_name="users")
 
     objects = UserManager()
 
@@ -88,12 +88,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 def generate_token_for_a_new_user(sender, instance: User, created: bool, **kwargs):
     if created:
         Token.objects.create(user=instance)
-
-
-class UserProjects(models.Model):
-    """The model store info about which users are assigned to which projects"""
-
-    project = models.ForeignKey(
-        "projects.Project", on_delete=models.CASCADE, null=False, blank=False
-    )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
