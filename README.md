@@ -7,6 +7,7 @@
 - install dependencies: `pip install -r requirements.txt`
 - setup pre-commit hooks: `pre-commit install`
 - run migrations: `python manage.py migrate`
+- run tests: `python manage.py test`
 - generate data for local development: `python manage.py generate_data`
 - run server: `python manage.py runserver`
 ## Useful info
