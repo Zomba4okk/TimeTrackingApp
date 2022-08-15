@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # libs
     "django_extensions",
+    "drf_yasg",
     "rest_framework",
     "rest_framework.authtoken",
-    "drf_yasg",
     # apps
     "apps.projects",
     "apps.time_tracking",

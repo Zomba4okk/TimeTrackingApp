@@ -1,3 +1,5 @@
+from typing import Iterable
+
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
 
@@ -18,6 +20,12 @@ class Project(TimeStampedModel):
         blank=True,
         help_text="Short project description",
     )
+
+    def assign_users(self, user_ids: Iterable[int]) -> None:
+        self.users.add(*user_ids)
+
+    def unassign_users(self, user_ids: Iterable[int]) -> None:
+        self.users.remove(*user_ids)
 
     def __str__(self):
         return self.name
